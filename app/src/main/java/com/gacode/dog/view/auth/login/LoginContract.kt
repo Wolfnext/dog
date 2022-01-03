@@ -1,4 +1,4 @@
-package com.gacode.dog.view.login
+package com.gacode.dog.view.auth.login
 
 import com.gacode.dog.base.BaseMVPPresenter
 import com.gacode.dog.base.BaseMVPView

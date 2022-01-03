@@ -1,6 +1,7 @@
-package com.gacode.dog.view.login
+package com.gacode.dog.view.auth.login
 
 import com.gacode.dog.R
+import android.util.Log
 import com.gacode.dog.base.BaseMVPPresenterImpl
 import com.gacode.dog.model.auth.Auth
 import com.gacode.dog.model.auth.Auth_fetcher
@@ -16,6 +17,7 @@ class LoginPresenterImpl : BaseMVPPresenterImpl<LoginContract.LoginView>(),
         authFetcher = Auth_fetcher.AuthFetcherImpl(getContext(), object : Auth_fetcher.Listener {
             override fun onSuccess(token: token?) {
                 if(token == null) {
+
                     view?.let { view -> call(view,
                         getContext().getString(R.string.auth_invalid),
                         view::onFailed)
@@ -26,6 +28,7 @@ class LoginPresenterImpl : BaseMVPPresenterImpl<LoginContract.LoginView>(),
                 }
             }
             override fun onError(throwable: Throwable) {
+                Log.d("auth",throwable.toString())
                 view?.let { view -> call(view, throwable, view::onError) }
             }
         })
