@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-object refresh_Fetcher {
+object Refresh_fetcher {
 
     class RefreshFetcherImpl(private val context: Context,
                              private val listener: Listener){
