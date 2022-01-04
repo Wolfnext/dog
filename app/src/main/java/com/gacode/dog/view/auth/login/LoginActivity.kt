@@ -8,7 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 //import android.support.design.widget.TextInputEditText
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPActivity
-import com.gacode.dog.view.auth.login.home.HomeActivity
+import com.gacode.dog.view.home.HomeActivity
 
 import kotlinx.android.synthetic.main.activity_login.*
 

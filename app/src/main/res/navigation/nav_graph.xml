@@ -6,15 +6,16 @@
     app:startDestination="@id/activity_calendar">
 
     <fragment
+        android:id="@+id/activity_calendar"
+        android:name="com.gacode.dog.view.calendar.CalendarActivity"
+        android:label="activity_calendar" />
+    <fragment
         android:id="@+id/activity_message"
         android:name="com.gacode.dog.view.message.MessageActivity"
-        android:label="fragment_activity_message" />
+        android:label="activity_calendat" />
     <fragment
         android:id="@+id/activity_profile"
         android:name="com.gacode.dog.view.profile.ProfileActivity"
         android:label="activity_profile" />
-    <fragment
-        android:id="@+id/activity_calendar"
-        android:name="com.gacode.dog.view.calendar.CalendarActivity"
-        android:label="activity_calendar" />
+
 </navigation>

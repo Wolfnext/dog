@@ -18,10 +18,11 @@ private const val ARG_PARAM2 = "param2"
  * Use the [MessageActivity.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MessageActivity(override var presenter: MessageContract.MessagePresenter) : BaseMVPFragment<MessageContract.MessageView,MessageContract.MessagePresenter>(),MessageContract.MessageView {
+class MessageActivity() : BaseMVPFragment<MessageContract.MessageView,MessageContract.MessagePresenter>(),MessageContract.MessageView {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    override lateinit var presenter: MessageContract.MessagePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

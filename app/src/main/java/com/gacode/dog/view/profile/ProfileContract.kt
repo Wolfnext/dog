@@ -10,6 +10,6 @@ object  ProfileContract {
     }
 
     interface ProfilePresenter : BaseMVPPresenter<ProfileView> {
-        fun signOut()
+        fun signOut(profileActivity: ProfileActivity)
     }
 }

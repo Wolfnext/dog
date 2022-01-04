@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPActivity
 import com.gacode.dog.view.auth.login.LoginActivity
-import com.gacode.dog.view.auth.login.home.HomeActivity
+import com.gacode.dog.view.home.HomeActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_splash.*
 

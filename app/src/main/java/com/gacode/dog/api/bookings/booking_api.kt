@@ -10,15 +10,5 @@ import retrofit2.http.POST
 
 interface booking_api {
 
-    /**
-     * Your endpoint of auth
-     */
-   // @GET("bookings")
-    //fun auth(@Body auth: Auth): Call<token>
 
-    /**
-     * Your endpoint of refresh your token
-     */
-    //@POST("/bookings/history")
-    //fun refresh(@Body refreshAuth: Refresh): Call<token>
 }

@@ -1,11 +1,17 @@
 package com.gacode.dog.view.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPActivity
+import com.gacode.dog.view.auth.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_profile.*
 
 class HomeActivity : BaseMVPActivity<HomeContract.HomeView, HomeContract.HomePresenter>(),
     HomeContract.HomeView {
@@ -21,19 +27,7 @@ class HomeActivity : BaseMVPActivity<HomeContract.HomeView, HomeContract.HomePre
         val navController = findNavController(R.id.nav_fragment)
         bottomNavigationView.setupWithNavController(navController)
 
-       /* btnSignOut.setOnClickListener {
-            btnSignOut.visibility = View.GONE
-            progressBar.visibility = View.VISIBLE
-            recyclerView.visibility = View.GONE
-
-            presenter.signOut()
-        }*/
     }
 
-    /*override fun onLogout() {
-        Log.d("log","Homestartactivity")
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
-    }*/
+
 }
