@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 //import android.support.design.widget.TextInputEditText
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPActivity
+import com.gacode.dog.view.auth.register.RegisterActivity
 import com.gacode.dog.view.home.HomeActivity
 
 import kotlinx.android.synthetic.main.activity_login.*
@@ -24,11 +25,17 @@ class LoginActivity : BaseMVPActivity<LoginContract.LoginView, LoginContract.Log
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
         btnSign.setOnClickListener {
             if(isValid()){
                 loading(true)
                 presenter.login(txtEmail.text.toString(), txtPassword.text.toString())
             }
+        }
+
+        btnRegister.setOnClickListener {
+                presenter.openRegister()
+
         }
     }
 
@@ -68,5 +75,11 @@ class LoginActivity : BaseMVPActivity<LoginContract.LoginView, LoginContract.Log
     override fun onError(e: Throwable) {
         loading(false)
         Snackbar.make(container, e.message.toString(), Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun onRegister(){
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

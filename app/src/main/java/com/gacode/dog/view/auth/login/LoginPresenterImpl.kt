@@ -1,12 +1,15 @@
 package com.gacode.dog.view.auth.login
 
-import com.gacode.dog.R
 import android.util.Log
+import com.auth0.android.jwt.Claim
+import com.auth0.android.jwt.JWT
+import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPPresenterImpl
 import com.gacode.dog.model.auth.Auth
 import com.gacode.dog.model.auth.Auth_fetcher
 import com.gacode.dog.model.token
 import com.gacode.dog.util.Authentication
+
 
 class LoginPresenterImpl : BaseMVPPresenterImpl<LoginContract.LoginView>(),
     LoginContract.LoginPresenter {
@@ -23,12 +26,13 @@ class LoginPresenterImpl : BaseMVPPresenterImpl<LoginContract.LoginView>(),
                         view::onFailed)
                     }
                 } else {
+
                     Authentication.save(getContext(), token)
                     view?.let { view -> call(view, view::onSuccess)}
                 }
             }
             override fun onError(throwable: Throwable) {
-                Log.d("auth",throwable.toString())
+
                 view?.let { view -> call(view, throwable, view::onError) }
             }
         })
@@ -37,5 +41,9 @@ class LoginPresenterImpl : BaseMVPPresenterImpl<LoginContract.LoginView>(),
 
     override fun cancel() {
         authFetcher?.cancel()
+    }
+
+    override fun openRegister() {
+        view?.let { view -> call(view, view::onRegister)}
     }
 }

@@ -5,7 +5,7 @@ import java.io.Serializable
 
 data class token(
     @SerializedName("scope")
-    val scope: String,
+                 val scope: String,
     @SerializedName("expire_date")
                  var expire_date:Long,
     @SerializedName("refresh_token")

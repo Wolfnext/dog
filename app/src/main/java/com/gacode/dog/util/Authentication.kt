@@ -2,6 +2,7 @@ package com.gacode.dog.util
 
 import android.content.Context
 import com.gacode.dog.model.token
+import com.gacode.dog.model.user
 import com.google.gson.Gson
 import java.util.*
 
@@ -10,11 +11,18 @@ object Authentication {
 
     private val authentication = "authentication"
     private val Token = "token"
+    private val User= "user"
 
     private fun put(context: Context, obj: token): Boolean {
         val preferences = context.getSharedPreferences(authentication, Context.MODE_PRIVATE)
         val editor = preferences.edit()
         return editor.putString(Token, Gson().toJson(obj)).commit()
+    }
+
+    private fun put(context: Context, obj: user): Boolean {
+        val preferences = context.getSharedPreferences(authentication, Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        return editor.putString(User, Gson().toJson(obj)).commit()
     }
 
     fun get(context: Context): token? {
@@ -24,12 +32,24 @@ object Authentication {
         return null
     }
 
+    fun getUser(context: Context): user? {
+        val preferences = context.getSharedPreferences(authentication, Context.MODE_PRIVATE)
+        val json = preferences.getString(User, null)
+        if(json != null)return Gson().fromJson(json, user::class.java)
+        return null
+    }
+
     fun save(context: Context, obj: token): Boolean {
         val calendar = GregorianCalendar.getInstance()
         var expiresIn: Long = calendar.time.time
         expiresIn += obj.expire_date * 1000
         obj.expire_date = expiresIn
 
+        return put(context, obj)
+    }
+
+
+    fun save(context: Context, obj: user): Boolean {
         return put(context, obj)
     }
 

@@ -9,10 +9,12 @@ object LoginContract {
         fun onSuccess()
         fun onFailed(e: String)
         fun onError(e: Throwable)
+        fun onRegister()
     }
 
     interface LoginPresenter : BaseMVPPresenter<LoginView> {
         fun login(email: String, password: String)
+        fun openRegister()
         fun cancel()
     }
 }

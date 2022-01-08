@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
-data class profile(
+data class Profile(
     @SerializedName("uid")
     val uid:String,
 @SerializedName("firstname")
@@ -16,8 +16,8 @@ val place:Object,
 @SerializedName("phone")
 val phone:Number,
 @SerializedName("desc")
-val desc:String,
-@SerializedName("photoUrl")
+var desc:String,
+@SerializedName("photoURL")
 val photoUrl:String):Serializable
 
 

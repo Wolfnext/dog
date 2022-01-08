@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gacode.dog">
 
+
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dog"
         android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY"/>
+
         <activity android:name=".view.search.SearchActivity"></activity>
         <activity android:name=".view.profile.services.ServicesActivity" />
         <activity android:name=".view.profile.dogs.DogsActivity" />

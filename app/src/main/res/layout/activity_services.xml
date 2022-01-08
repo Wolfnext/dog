@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".view.profile.services.ServicesActivity">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="407dp"
+        android:layout_height="50dp"
+        android:text="Moje usługi"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="134dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
