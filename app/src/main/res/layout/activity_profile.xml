@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="26dp"
+            android:fontFamily="sans-serif-light"
             android:text="firstname + surname"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -57,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:fontFamily="sans-serif-light"
             android:text="Właściciel psa"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +72,7 @@
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Body1"
         tools:layout_editor_absoluteX="1dp">
 
         <com.google.android.material.tabs.TabItem

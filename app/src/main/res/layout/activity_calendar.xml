@@ -5,19 +5,51 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.auth.login.home.HomeActivity">
+    tools:context=".view.home.HomeActivity">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/text_month"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="sans-serif-light"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        android:id="@+id/compactcalendar_view"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:compactCalendarBackgroundColor="@color/white"
+        app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/purple_700"
+        app:compactCalendarMultiEventIndicatorColor="@color/black"
+        app:compactCalendarTargetHeight="250dp"
+        app:compactCalendarTextColor="@color/black"
+        app:compactCalendarTextSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_month" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="409dp"
         android:layout_height="316dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        tools:layout_editor_absoluteX="1dp" />
+        android:layout_marginTop="10dp"
+        android:background="@color/places_autocomplete_fullscreen_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
