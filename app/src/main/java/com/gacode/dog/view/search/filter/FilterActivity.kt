@@ -36,7 +36,6 @@ class FilterActivity() : BaseMVPActivity<FilterContract.FilterView, FilterContra
             startActivity(intent)
         }
 
-
         initGooglePlaces()
     }
 
