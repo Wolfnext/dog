@@ -12,7 +12,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:background="@color/bg"
+        android:background="@color/places_autocomplete_fullscreen_background"
         app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/custom_input"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/dog_icon" />
 
         <TextView
             android:id="@+id/text_name"

@@ -8,6 +8,10 @@ import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPActivity
 import com.gacode.dog.util.JWTUtil
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
+
 
 class HomeActivity : BaseMVPActivity<HomeContract.HomeView, HomeContract.HomePresenter>(),
     HomeContract.HomeView {
@@ -22,6 +26,11 @@ class HomeActivity : BaseMVPActivity<HomeContract.HomeView, HomeContract.HomePre
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         val navController = findNavController(R.id.nav_fragment)
         bottomNavigationView.setupWithNavController(navController)
+
+        AppCenter.start(
+            application, "1945847a-3ea5-45aa-919f-0c3cc01d2909",
+            Analytics::class.java, Crashes::class.java
+        )
 
         val email = JWTUtil.getEmail(this)
         val type = JWTUtil.getType(this)

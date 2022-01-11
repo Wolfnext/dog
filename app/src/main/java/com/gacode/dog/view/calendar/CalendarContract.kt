@@ -7,5 +7,7 @@ object CalendarContract {
     interface CalendarView : BaseMVPView {
         fun onLogout()
     }
-    interface CalendarPresenter : BaseMVPPresenter<CalendarContract.CalendarView> {}
+    interface CalendarPresenter : BaseMVPPresenter<CalendarContract.CalendarView> {
+
+    }
 }

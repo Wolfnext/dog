@@ -46,7 +46,7 @@ class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileCon
              val view: View = inflater!!.inflate(R.layout.activity_profile, container, false)
 
              presenter.attachView(this)
-             Log.d("context",this.context.toString())
+
              val uid = this.context?.let { JWTUtil.getUID(it) }
              this.context?.let { presenter.getProfile(it, uid) }
 

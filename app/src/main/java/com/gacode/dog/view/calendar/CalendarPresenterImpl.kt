@@ -6,4 +6,5 @@ import com.gacode.dog.view.profile.ProfileContract
 class CalendarPresenterImpl  : BaseMVPPresenterImpl<CalendarContract.CalendarView>(),
     CalendarContract.CalendarPresenter {
 
+
     }

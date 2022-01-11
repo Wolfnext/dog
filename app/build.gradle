@@ -50,6 +50,12 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.5.0' // for places
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0' // for calendar
 
+//for app center development and testing
+    def appCenterSdkVersion = '4.3.1'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+
 
 
     def nav_version = "2.3.5"
