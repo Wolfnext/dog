@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPFragment
 import com.gacode.dog.util.JWTUtil
-import com.gacode.dog.view.profile.update.UpdateProfileActivity
 import com.gacode.dog.view.search.SearchActivity
 import com.github.sundeepk.compactcalendarview.CompactCalendarView.CompactCalendarViewListener
 import com.github.sundeepk.compactcalendarview.domain.Event

@@ -19,6 +19,7 @@
             android:value="YOUR_API_KEY"/>
 
         <activity android:name=".view.search.SearchActivity"></activity>
+        <activity android:name=".view.search.filter.FilterActivity"></activity>
         <activity android:name=".view.profile.services.ServicesActivity" />
         <activity android:name=".view.profile.dogs.DogsActivity" />
         <activity android:name=".view.profile.update.UpdateProfileActivity" />
