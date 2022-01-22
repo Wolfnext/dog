@@ -69,8 +69,8 @@ class CalendarActivity() : BaseMVPFragment<CalendarContract.CalendarView,Calenda
 
         // This loop will create 20 Views containing
         // the image with the count of view
-        for (i in 1..2) {
-            data.add(ItemsViewModel(R.drawable.dog_icon, "Wyprowadzenie psa " + i))
+        for (i in 1..5) {
+            data.add(ItemsViewModel(R.drawable.dog_icon, "Roman S. " + i))
         }
 
         // This will pass the ArrayList to our Adapter

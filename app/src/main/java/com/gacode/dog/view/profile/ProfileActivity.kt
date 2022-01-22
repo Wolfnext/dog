@@ -47,14 +47,17 @@ class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileCon
 
              presenter.attachView(this)
 
+             Log.d("context",this.context.toString())
              val uid = this.context?.let { JWTUtil.getUID(it) }
-             this.context?.let { presenter.getProfile(it, uid) }
+             this.context?.let { presenter.getProfile(it) }
 
              return view
          }
 
          override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
              super.onViewCreated(view, savedInstanceState)
+
+
 
              type = this.context?.let { JWTUtil.getType(it) }
              if (type != null) {
@@ -64,6 +67,7 @@ class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileCon
              initialTabLayout()
 
              view.btnUpdateProfile.setOnClickListener { view ->
+                 this.context?.let { presenter.getProfile(it) }
                  activity?.let{
                      val intent = Intent (it, UpdateProfileActivity::class.java)
                      it.startActivity(intent)

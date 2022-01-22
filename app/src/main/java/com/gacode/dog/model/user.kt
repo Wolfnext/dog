@@ -9,7 +9,7 @@ data class user(
     @SerializedName("email")
     var email:String,
     @SerializedName("type")
-    val type:Int,
+    val type:String,
     @SerializedName("created_at")
     val created_at:String):Serializable
 

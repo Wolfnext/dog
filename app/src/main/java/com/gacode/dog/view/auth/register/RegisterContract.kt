@@ -12,7 +12,7 @@ object RegisterContract {
     }
 
     interface RegisterPresenter : BaseMVPPresenter<RegisterView> {
-        fun register(email: String, password: String, type: Int)
+        fun register(email: String, password: String, type: String)
         fun openActivation()
         fun openLogin()
         fun cancel()

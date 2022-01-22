@@ -1,7 +1,6 @@
 package com.gacode.dog.view.auth.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
@@ -9,9 +8,7 @@ import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPActivity
 import com.gacode.dog.view.auth.activation.ActiveAccountActivity
 import com.gacode.dog.view.auth.login.LoginActivity
-import com.gacode.dog.view.home.HomeActivity
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.btnRegister
 import kotlinx.android.synthetic.main.activity_login.progressBar
 import kotlinx.android.synthetic.main.activity_login.txtEmail
@@ -40,13 +37,13 @@ class RegisterActivity : BaseMVPActivity<RegisterContract.RegisterView, Register
     }
 }
 
-    private fun typeChecked() : Int {
+    private fun typeChecked() : String {
        val type = radioType.checkedRadioButtonId
         when(type){
-            R.id.owner_type -> return 1
-            R.id.sitter_type -> return 2
+            R.id.owner_type -> return "1"
+            R.id.sitter_type -> return "2"
         }
-        return 1
+        return "1"
     }
 
     private fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()

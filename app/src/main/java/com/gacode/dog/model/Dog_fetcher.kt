@@ -5,26 +5,26 @@ import android.util.Log
 import com.gacode.dog.R
 import com.gacode.dog.api.API_Settings
 import com.gacode.dog.api.base.API_creator
-import com.gacode.dog.api.profile.profile_api
+import com.gacode.dog.api.dogs.dog_api
 import com.gacode.dog.util.Authentication
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-object Profile_fetcher {
-    class ProfileFetcherImpl(
+object Dog_fetcher {
+    class DogFetcherImpl(
         private val context: Context,
-        private val listener: Profile_fetcher.Listener
+        private val listener: Dog_fetcher.Listener
     ) {
 
-        private var callback: Call<Profile>? = null
+        private var callback: Call<ArrayList<Dog>>? = null
 
         fun getProfile(context: Context) {
-            val getProfileFetcher = API_creator(profile_api::class.java, API_Settings.base).generate()
+            val getProfileFetcher = API_creator(dog_api::class.java, API_Settings.base).generate()
 
-            callback = getProfileFetcher.getProfile(token = "Bearer " + Authentication.getAccessToken(context))
-            callback?.enqueue(object : Callback<Profile> {
-                override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+            callback = getProfileFetcher.getDogs(token = "Bearer " + Authentication.getAccessToken(context))
+            callback?.enqueue(object : Callback<ArrayList<Dog>> {
+                override fun onResponse(call: Call<ArrayList<Dog>>, response: Response<ArrayList<Dog>>) {
                     Log.d("response",response.body().toString())
                     if (response != null) {
                         if (response.isSuccessful) {
@@ -36,11 +36,11 @@ object Profile_fetcher {
                         }
                     } else {
                         Log.d("response","error")
-                        listener.onError(Throwable(this@ProfileFetcherImpl.context.getString(R.string.auth_error)))
+                        listener.onError(Throwable(this@DogFetcherImpl.context.getString(R.string.auth_error)))
                     }
                 }
 
-                override fun onFailure(call: Call<Profile>?, t: Throwable?) {
+                override fun onFailure(call: Call<ArrayList<Dog>>?, t: Throwable?) {
                     Log.d("response","failure")
 
                 }
@@ -55,7 +55,7 @@ object Profile_fetcher {
 
 
     interface Listener {
-        fun onSuccess(profile: Profile?)
+        fun onSuccess(dog: ArrayList<Dog>?)
         fun onError(throwable: Throwable)
     }
 }

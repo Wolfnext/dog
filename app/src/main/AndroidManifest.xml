@@ -20,8 +20,6 @@
 
         <activity android:name=".view.search.SearchActivity"></activity>
         <activity android:name=".view.search.filter.FilterActivity"></activity>
-        <activity android:name=".view.profile.services.ServicesActivity" />
-        <activity android:name=".view.profile.dogs.DogsActivity" />
         <activity android:name=".view.profile.update.UpdateProfileActivity" />
         <activity android:name=".view.auth.changePassword.ChangePasswordActivity" />
         <activity android:name=".view.auth.activation.ActiveAccountActivity" />

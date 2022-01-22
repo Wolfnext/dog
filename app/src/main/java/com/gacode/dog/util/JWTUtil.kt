@@ -1,6 +1,7 @@
 package com.gacode.dog.util
 
 import android.content.Context
+import android.util.Log
 import com.auth0.android.jwt.JWT
 import com.gacode.dog.model.token
 import com.gacode.dog.view.profile.ProfileActivity
@@ -11,6 +12,7 @@ object JWTUtil {
 
     fun decodeJWT(context: Context, claimName: String) :String?{
         var tk = Authentication.get(context)
+        Log.d("token",tk.toString())
         if (tk != null) {
             jwt = JWT(tk.access_token)
         }

@@ -27,10 +27,6 @@ class HomeActivity : BaseMVPActivity<HomeContract.HomeView, HomeContract.HomePre
         val navController = findNavController(R.id.nav_fragment)
         bottomNavigationView.setupWithNavController(navController)
 
-        AppCenter.start(
-            application, "1945847a-3ea5-45aa-919f-0c3cc01d2909",
-            Analytics::class.java, Crashes::class.java
-        )
 
         val email = JWTUtil.getEmail(this)
         val type = JWTUtil.getType(this)

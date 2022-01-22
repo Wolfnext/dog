@@ -16,7 +16,7 @@ object  ProfileContract {
     }
 
     interface ProfilePresenter : BaseMVPPresenter<ProfileView> {
-        fun getProfile(context: Context, uid: String?)
+        fun getProfile(context: Context)
         fun cancel()
         fun signOut(ProfileActivity: ProfileActivity)
     }

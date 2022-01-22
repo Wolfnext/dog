@@ -1,6 +1,7 @@
 package com.gacode.dog.view.profile
 
 import android.content.Context
+import android.util.Log
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPPresenterImpl
 import com.gacode.dog.model.Profile
@@ -13,7 +14,8 @@ class ProfilePresenterImpl : BaseMVPPresenterImpl<ProfileContract.ProfileView>()
 
     private var ProfileFetcher: Profile_fetcher.ProfileFetcherImpl?= null
 
-    override fun getProfile(context : Context, uid : String?) {
+    override fun getProfile(context : Context) {
+
         ProfileFetcher = Profile_fetcher.ProfileFetcherImpl(context, object : Profile_fetcher.Listener {
             override fun onSuccess(profile: Profile?) {
                 if(profile == null) {
@@ -30,7 +32,8 @@ class ProfilePresenterImpl : BaseMVPPresenterImpl<ProfileContract.ProfileView>()
                 view?.let { view -> call(view, throwable, view::onError) }
             }
         })
-        ProfileFetcher?.getProfile(context, uid)
+
+        ProfileFetcher?.getProfile(context)
     }
 
     override fun cancel() {

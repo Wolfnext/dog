@@ -1,4 +1,4 @@
-package com.gacode.dog.view.calendar
+package com.gacode.dog.view.profile.dogs
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapt
         // inflates the card_view_design view
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_view_booking, parent, false)
+            .inflate(R.layout.card_view_dogs, parent, false)
 
         return ViewHolder(view)
     }
@@ -28,7 +28,8 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapt
         //holder.imageView.setImageResource(ItemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.text
+        holder.dogName.text = ItemsViewModel.dogName
+        holder.dogDesc.text = ItemsViewModel.dogDesc
 
         //holder.textTime.text
 
@@ -41,7 +42,7 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapt
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val textTime: TextView = itemView.findViewById(R.id.text_time)
-        val textView: TextView = itemView.findViewById(R.id.text_nameDog)
+        var dogName: TextView = itemView.findViewById(R.id.text_nameDog)
+        var dogDesc: TextView = itemView.findViewById(R.id.text_dogDesc)
     }
 }

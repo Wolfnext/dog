@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".view.profile.dogs.DogsActivity">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lista psów Fragment"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="186dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewDogs"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

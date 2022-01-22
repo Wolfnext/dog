@@ -13,45 +13,49 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/text_nameDog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Roman T"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/text_dogDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-light"
             android:text="0,5 km stąd"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_dog"
             app:layout_constraintTop_toBottomOf="@+id/text_nameDog" />
 
         <TextView
-            android:id="@+id/text_price"
+            android:id="@+id/text_nameDog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-light"
-            android:text="50 PLN"
-            android:textColor="@color/quantum_googred"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Roman T"
+            android:textSize="18dp"
             android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/image_dog"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_dog"
+            android:layout_width="56dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pet"
+            tools:srcCompat="@drawable/pet" /><![CDATA[
+
+
 
 
         />
+
     ]]>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

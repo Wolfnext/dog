@@ -13,7 +13,7 @@ class RegisterPresenterImpl : BaseMVPPresenterImpl<RegisterContract.RegisterView
 
     private var registerFetcher: Register_fetcher.RegisterFetcher?= null
 
-    override fun register(email: String, password: String, type: Int) {
+    override fun register(email: String, password: String, type: String) {
         registerFetcher = Register_fetcher.RegisterFetcher(getContext(), object : Register_fetcher.Listener {
             override fun onSuccess(user: user?) {
                 if(user == null) {
