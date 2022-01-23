@@ -11,14 +11,17 @@ object DogsContract {
     interface DogsView : BaseMVPView {
 
         fun onSuccess(dog : ArrayList<Dog>)
+        fun onSuccess()
         fun onFailed(e: String)
         fun onError(e: Throwable)
         fun onLogout()
+
     }
 
     interface DogsPresenter : BaseMVPPresenter<DogsView> {
         fun signOut(DogsActivity: DogsActivity)
         fun getDogs(context: Context)
+        fun deleteDog(context: Context, id:Int)
         fun cancel()
     }
 }

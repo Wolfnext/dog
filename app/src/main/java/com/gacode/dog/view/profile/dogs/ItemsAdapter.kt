@@ -1,13 +1,19 @@
 package com.gacode.dog.view.profile.dogs
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.content.Intent
+import android.util.Log
+import android.view.*
+import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.gacode.dog.R
+import com.gacode.dog.model.Dog
+import com.gacode.dog.view.profile.dogs.editDog.EditDogActivity
+import java.util.ArrayList
 
-class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+
+class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: DogsActivity) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>()  {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,7 +22,7 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapt
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_view_dogs, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(view, dogsActivity, mList)
     }
 
     // binds the list items to a view
@@ -24,12 +30,11 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapt
 
         val ItemsViewModel = mList[position]
 
-        // sets the image to the imageview from our itemHolder class
-        //holder.imageView.setImageResource(ItemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
-        holder.dogName.text = ItemsViewModel.dogName
-        holder.dogDesc.text = ItemsViewModel.dogDesc
+        holder.dogName.text = ItemsViewModel.name
+        holder.dogDesc.text = ItemsViewModel.desc
+
 
         //holder.textTime.text
 
@@ -40,9 +45,68 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapt
         return mList.size
     }
 
+
+
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+    class ViewHolder(ItemView: View, private val dogsActivity: DogsActivity, private var mList: ArrayList<Dog>) : RecyclerView.ViewHolder(ItemView), View.OnLongClickListener, View.OnCreateContextMenuListener, PopupMenu.OnMenuItemClickListener {
         var dogName: TextView = itemView.findViewById(R.id.text_nameDog)
         var dogDesc: TextView = itemView.findViewById(R.id.text_dogDesc)
+        var presenter: DogsContract.DogsPresenter = DogsPresenterImpl()
+
+
+
+
+        init {
+            itemView.setOnLongClickListener(this)
+            itemView.setOnCreateContextMenuListener(this)
+        }
+
+        override fun onCreateContextMenu(menu: ContextMenu, view: View,
+                                         menuInfo: ContextMenu.ContextMenuInfo?) {
+
+        }
+
+
+
+        override fun onLongClick(v: View?): Boolean {
+
+            if (v != null) {
+                Toast.makeText(v.context, "long click", Toast.LENGTH_SHORT).show()
+                showPopupMenu(v);
+            }
+                Log.d("event","click")
+
+            return true
+
+        }
+
+        private fun showPopupMenu(view: View) {
+            val popupMenu = PopupMenu(view.context, view)
+            popupMenu.inflate(R.menu.popup_menu)
+            popupMenu.setOnMenuItemClickListener(this)
+            popupMenu.show()
+        }
+
+        override fun onMenuItemClick(item: MenuItem?): Boolean {
+            val ItemsViewModel = mList[position]
+            return when (item!!.itemId) {
+                R.id.popup_item_1 -> {
+
+                    val intent = Intent(dogsActivity.activity, EditDogActivity::class.java)
+                    intent.putExtra("dog",ItemsViewModel)
+                    dogsActivity.startActivity(intent)
+                    true
+                }
+                R.id.popup_item_2 -> {
+                    presenter.deleteDog(dogsActivity.requireContext(),ItemsViewModel.id)
+                    true
+                }
+                else -> false
+            }
+        }
+
+
+
+
     }
 }

@@ -65,10 +65,10 @@ object Authentication {
         if(token != null) {
             val calendar = GregorianCalendar.getInstance()
             val currentTime = calendar.time.time
-            //val expiresIn = token.expire_date
-           // if (expiresIn == 0L) throw WithoutAuthenticatedException()
-            //return currentTime > expiresIn
-            return true
+            val expiresIn = JWTUtil.getExpiredTime(context);
+            if (expiresIn == 0L) throw WithoutAuthenticatedException()
+            return currentTime > expiresIn!!
+           // return true
         } else {
             throw WithoutAuthenticatedException()
         }
@@ -81,8 +81,7 @@ object Authentication {
     fun getRefresh(context: Context): String {
         val token = get(context)
         if(token != null){
-           // return token.refresh_token
-            return "tre"
+            return token.refresh_token
         }else{
             throw WithoutAuthenticatedException()
         }

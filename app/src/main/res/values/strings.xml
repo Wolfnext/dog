@@ -43,4 +43,11 @@
     <string name="prompt_desc">Opis</string>
     <string name="prompt_update">Aktualizuj</string>
     <string name="getDog_error">Nie udało się pobrać listy psów</string>
+    <string name="menu_title">Więcej</string>
+
+    <string-array name="gender">
+        <item>pies</item>
+        <item>suka</item>
+
+    </string-array>
 </resources>

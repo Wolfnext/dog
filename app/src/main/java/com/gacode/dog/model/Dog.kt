@@ -11,15 +11,15 @@ data class Dog(
                    @SerializedName("name")
                    var name:String,
                    @SerializedName("race")
-                   val race:String,
+                   var race:String,
                    @SerializedName("birth")
-                   val birth:String,
+                   var birth:String,
                    @SerializedName("desc")
-                   val desc:String,
+                   var desc:String,
                    @SerializedName("gender")
-                   val gender:String,
+                   var gender:String,
                    @SerializedName("createdAt")
                    val createdAt:String,
                     @SerializedName("size")
-                    val size:String): Serializable
+                   var size:String): Serializable
 

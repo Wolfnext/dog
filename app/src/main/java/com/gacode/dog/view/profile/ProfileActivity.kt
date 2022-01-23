@@ -74,7 +74,7 @@ class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileCon
                  }
              }
 
-             view.btn_logout.setOnClickListener { view ->
+             view.btnLogout.setOnClickListener { view ->
                  Log.d("btnSetup", "Selected")
                  presenter.signOut(this)
              }

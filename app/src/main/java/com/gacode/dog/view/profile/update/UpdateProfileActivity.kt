@@ -4,13 +4,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.gacode.dog.R
+import com.gacode.dog.base.BaseMVPActivity
+import com.gacode.dog.model.Dog
+
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 
-class UpdateProfileActivity : AppCompatActivity() {
+class UpdateProfileActivity() : BaseMVPActivity<UpdateProfileContract.UpdateProfileView, UpdateProfileContract.UpdateProfilePresenter>(),
+    UpdateProfileContract.UpdateProfileView {
+
+    override var presenter: UpdateProfileContract.UpdateProfilePresenter = UpdateProfilePresenterImpl()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
@@ -40,5 +47,21 @@ class UpdateProfileActivity : AppCompatActivity() {
                 Log.i("maps", "An error occurred: $status")
             }
         })
+    }
+
+    override fun onSuccess(dog: Dog) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailed(e: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onError(e: Throwable) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLogout() {
+        TODO("Not yet implemented")
     }
 }

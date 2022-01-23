@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gacode.dog">
 
-
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dog"
         android:usesCleartextTraffic="true">
+
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY"/>
+            android:value="YOUR_API_KEY" />
 
-        <activity android:name=".view.search.SearchActivity"></activity>
-        <activity android:name=".view.search.filter.FilterActivity"></activity>
+        <activity android:name=".view.search.SearchActivity" />
+        <activity android:name=".view.search.filter.FilterActivity" />
         <activity android:name=".view.profile.update.UpdateProfileActivity" />
+
         <activity android:name=".view.auth.changePassword.ChangePasswordActivity" />
         <activity android:name=".view.auth.activation.ActiveAccountActivity" />
         <activity android:name=".view.auth.forget.ForgetActivity" />
@@ -37,6 +38,7 @@
         </activity>
         <activity android:name=".view.auth.login.LoginActivity" />
         <activity android:name=".view.home.HomeActivity" />
+        <activity android:name=".view.profile.dogs.editDog.EditDogActivity"/>
     </application>
 
 </manifest>

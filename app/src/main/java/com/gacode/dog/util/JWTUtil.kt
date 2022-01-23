@@ -33,5 +33,9 @@ object JWTUtil {
         return decodeJWT(context, "uid")
     }
 
+    fun getExpiredTime(context: Context) :Long ?{
+        return decodeJWT(context, "exp")?.toLong()
+    }
+
 
 }

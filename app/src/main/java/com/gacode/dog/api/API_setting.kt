@@ -1,5 +1,5 @@
 package com.gacode.dog.api
 
 object API_Settings {
-    val base = "http://10.0.2.2:8000/"
+    val base = "http://dogapp.servehttp.com:4444/"
 }
