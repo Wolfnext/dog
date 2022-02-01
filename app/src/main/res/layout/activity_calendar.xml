@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/text_month"
-        android:layout_width="308dp"
+        android:layout_width="300dp"
         android:layout_height="37dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="10dp"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="15dp"
         android:background="@android:color/transparent"
         android:pointerIcon="zoom_in"
         app:icon="@drawable/ic_baseline_search_24"

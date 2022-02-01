@@ -48,6 +48,35 @@ object Profile_fetcher {
         }
 
 
+        fun updateProfile(context: Context, profile :Profile) {
+            val getProfileFetcher = API_creator(profile_api::class.java, API_Settings.base).generate()
+
+            callback = getProfileFetcher.updateProfile(token = "Bearer " + Authentication.getAccessToken(context), profile)
+            callback?.enqueue(object : Callback<Profile> {
+                override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                    Log.d("response",response.body().toString())
+                    if (response != null) {
+                        if (response.isSuccessful) {
+                            Log.d("response",response.body().toString())
+                            response.body()?.let { listener.onSuccess(it) }
+                        } else {
+                            Log.d("response",response.body().toString())
+                            listener.onSuccess(null)
+                        }
+                    } else {
+                        Log.d("response","error")
+                        listener.onError(Throwable(this@ProfileFetcherImpl.context.getString(R.string.auth_error)))
+                    }
+                }
+
+                override fun onFailure(call: Call<Profile>?, t: Throwable?) {
+                    Log.d("response","failure")
+
+                }
+            })
+        }
+
+
         
 
 

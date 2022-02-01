@@ -25,7 +25,7 @@ class EditDogPresenterImpl : BaseMVPPresenterImpl<EditDogContract.EditDogView>()
                     view?.let { view ->
                         call(
                             view,
-                            context.getString(R.string.getDog_error),
+                            context.getString(R.string.postDog_error),
                             view::onFailed
                         )
                     }

@@ -1,6 +1,7 @@
 package com.gacode.dog.util
 
 import android.content.Context
+import android.util.Log
 import com.gacode.dog.model.token
 import com.gacode.dog.model.user
 import com.google.gson.Gson
@@ -66,9 +67,9 @@ object Authentication {
             val calendar = GregorianCalendar.getInstance()
             val currentTime = calendar.time.time
             val expiresIn = JWTUtil.getExpiredTime(context);
-            if (expiresIn == 0L) throw WithoutAuthenticatedException()
+            if (expiresIn == null) throw WithoutAuthenticatedException()
             return currentTime > expiresIn!!
-           // return true
+
         } else {
             throw WithoutAuthenticatedException()
         }

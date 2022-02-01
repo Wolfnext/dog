@@ -32,7 +32,7 @@
     <string name="sendCode_error">Nie udało się wysłać wiadomości z kodem</string>
     <string name="ActiveAccount_error">Niepoprawny kod aktywacji</string>
     <string name="register_invalid">Rejestracja nie powiodła się</string>
-    <string name="authenticating">Authenticating ...</string>
+    <string name="authenticating">Logowanie ...</string>
     <string name="cards_invalid">Invalid cards</string>
     <string name="card_format_error">Has ocurred an error on format data</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -44,6 +44,9 @@
     <string name="prompt_update">Aktualizuj</string>
     <string name="getDog_error">Nie udało się pobrać listy psów</string>
     <string name="menu_title">Więcej</string>
+    <string name="postDog_error">Nie udało się utworzyć psa</string>
+    <string name="getService_error">Nie udało się pobrać usług</string>
+    <string name="getBooking_error">Nie udało się pobrać zamówień</string>
 
     <string-array name="gender">
         <item>pies</item>

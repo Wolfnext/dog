@@ -45,7 +45,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editDog_race"
+            android:id="@+id/editProfile_firstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light" />
@@ -71,7 +71,7 @@
         <!--this is the actual edit text which takes the input-->
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_surname"
+            android:id="@+id/editProfile_surname"
             android:fontFamily="sans-serif-light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -96,7 +96,7 @@
 
         <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/date"
+            android:id="@+id/editProfile_phone"
             android:fontFamily="sans-serif-light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -149,7 +149,7 @@
 
         <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_desc"
+            android:id="@+id/editProfile_desc"
             android:layout_width="match_parent"
             android:fontFamily="sans-serif-light"
             android:layout_height="150dp"

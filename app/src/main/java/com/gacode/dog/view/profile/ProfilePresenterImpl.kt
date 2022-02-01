@@ -36,6 +36,9 @@ class ProfilePresenterImpl : BaseMVPPresenterImpl<ProfileContract.ProfileView>()
         ProfileFetcher?.getProfile(context)
     }
 
+
+
+
     override fun cancel() {
         ProfileFetcher?.cancel()
     }

@@ -21,7 +21,6 @@
         <activity android:name=".view.search.SearchActivity" />
         <activity android:name=".view.search.filter.FilterActivity" />
         <activity android:name=".view.profile.update.UpdateProfileActivity" />
-
         <activity android:name=".view.auth.changePassword.ChangePasswordActivity" />
         <activity android:name=".view.auth.activation.ActiveAccountActivity" />
         <activity android:name=".view.auth.forget.ForgetActivity" />
@@ -38,7 +37,8 @@
         </activity>
         <activity android:name=".view.auth.login.LoginActivity" />
         <activity android:name=".view.home.HomeActivity" />
-        <activity android:name=".view.profile.dogs.editDog.EditDogActivity"/>
+        <activity android:name=".view.profile.dogs.editDog.EditDogActivity" />
+        <activity android:name=".view.profile.services.editService.EditServiceActivity"></activity>
     </application>
 
 </manifest>

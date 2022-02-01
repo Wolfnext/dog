@@ -1,11 +1,9 @@
 package com.gacode.dog.view.profile.dogs
 
 import android.content.Intent
-import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.gacode.dog.R
 import com.gacode.dog.model.Dog
@@ -49,7 +47,7 @@ class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: 
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View, private val dogsActivity: DogsActivity, private var mList: ArrayList<Dog>) : RecyclerView.ViewHolder(ItemView), View.OnLongClickListener, View.OnCreateContextMenuListener, PopupMenu.OnMenuItemClickListener {
-        var dogName: TextView = itemView.findViewById(R.id.text_nameDog)
+        var dogName: TextView = itemView.findViewById(R.id.text_firstname)
         var dogDesc: TextView = itemView.findViewById(R.id.text_dogDesc)
         var presenter: DogsContract.DogsPresenter = DogsPresenterImpl()
 
@@ -71,10 +69,10 @@ class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: 
         override fun onLongClick(v: View?): Boolean {
 
             if (v != null) {
-                Toast.makeText(v.context, "long click", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(v.context, "long click", Toast.LENGTH_SHORT).show()
                 showPopupMenu(v);
             }
-                Log.d("event","click")
+                //Log.d("event","click")
 
             return true
 
@@ -98,15 +96,15 @@ class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: 
                     true
                 }
                 R.id.popup_item_2 -> {
-                    presenter.deleteDog(dogsActivity.requireContext(),ItemsViewModel.id)
+                    ItemsViewModel.id?.let {
+                        presenter.deleteDog(dogsActivity.requireContext(),
+                            it
+                        )
+                    }
                     true
                 }
                 else -> false
             }
         }
-
-
-
-
     }
 }

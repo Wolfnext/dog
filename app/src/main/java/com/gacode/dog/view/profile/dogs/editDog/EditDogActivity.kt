@@ -2,15 +2,14 @@ package com.gacode.dog.view.profile.dogs.editDog
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPActivity
 import com.gacode.dog.model.Dog
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_edit_dog.*
-import kotlinx.android.synthetic.main.activity_login.*
 
 
 class EditDogActivity() : BaseMVPActivity<EditDogContract.EditDogView, EditDogContract.EditDogPresenter>(),
@@ -39,14 +38,16 @@ class EditDogActivity() : BaseMVPActivity<EditDogContract.EditDogView, EditDogCo
 
 
        this.dogData =  intent.getSerializableExtra("dog") as Dog
-        updateUI()
+
+       Log.d("dog",this.dogData.toString())
+        if(this.dogData != null) updateUI()
 
         btnDog_update.setOnClickListener { view ->
             update()
-           presenter.updateDog(this, this.dogData!!.id, this.dogData!!)
+            if(this.dogData!!.id == null)presenter.createDog(this, this.dogData!!)
+            this.dogData!!.id?.let { presenter.updateDog(this, it, this.dogData!!) }
+
          }
-
-
 
     }
 
@@ -60,15 +61,15 @@ class EditDogActivity() : BaseMVPActivity<EditDogContract.EditDogView, EditDogCo
     }
 
     fun updateUI(){
-        editDog_name.setText(this.dogData?.name)
-        editDog_race.setText(this.dogData?.race)
-        editDog_size.setText(this.dogData?.size)
-        editDog_desc.setText(this.dogData?.desc)
-        editDog_birth.setText(this.dogData?.birth)
+        editDog_name.setText(this.dogData!!.name)
+        editDog_race.setText(this.dogData!!.race)
+        editDog_size.setText(this.dogData!!.size)
+        editDog_desc.setText(this.dogData!!.desc)
+        editDog_birth.setText(this.dogData!!.birth)
         editSpinner_gender.setSelection(arraySpinner.indexOf(this.dogData?.gender))
 
-        if(this.dogData?.id!! > 0 )editDog.setText("Edycja")
-        else editDog.setText("Dodawanie")
+        if(this.dogData?.id == null )editDog.setText("dodawanie")
+        else editDog.setText("Edycja")
 
     }
 

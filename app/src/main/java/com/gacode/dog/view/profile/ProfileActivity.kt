@@ -17,11 +17,9 @@ import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPFragment
 import com.gacode.dog.model.Profile
 import com.gacode.dog.util.JWTUtil
-import com.gacode.dog.view.Services.services.ServicesActivity
-import com.gacode.dog.view.auth.activation.ActiveAccountActivity
+
 import com.gacode.dog.view.auth.login.LoginActivity
-import com.gacode.dog.view.profile.dogs.DogsActivity
-import com.gacode.dog.view.profile.historyBooking.HistoryBookingActivity
+
 import com.gacode.dog.view.profile.update.UpdateProfileActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
@@ -36,9 +34,9 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileContract.ProfilePresenter>(), ProfileContract.ProfileView
      {
-
          override var presenter: ProfileContract.ProfilePresenter = ProfilePresenterImpl()
          private var type : String? = null;
+         private var profileData : Profile? = null;
 
          override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                    savedInstanceState: Bundle?): View? {
@@ -47,22 +45,21 @@ class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileCon
 
              presenter.attachView(this)
 
-             Log.d("context",this.context.toString())
              val uid = this.context?.let { JWTUtil.getUID(it) }
              this.context?.let { presenter.getProfile(it) }
 
              return view
          }
 
+         override fun onStart() {
+             super.onStart()
+             this.context?.let { presenter.getProfile(it) }
+         }
+
          override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
              super.onViewCreated(view, savedInstanceState)
 
-
-
              type = this.context?.let { JWTUtil.getType(it) }
-             if (type != null) {
-                 Log.d("type", type!!)
-             }
 
              initialTabLayout()
 
@@ -70,18 +67,19 @@ class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileCon
                  this.context?.let { presenter.getProfile(it) }
                  activity?.let{
                      val intent = Intent (it, UpdateProfileActivity::class.java)
+                     intent.putExtra("profile", this.profileData)
                      it.startActivity(intent)
                  }
              }
 
              view.btnLogout.setOnClickListener { view ->
-                 Log.d("btnSetup", "Selected")
                  presenter.signOut(this)
              }
          }
 
          private fun updateUI(profile :Profile){
-            text_name.text = profile.firstname + " "+ profile.surname
+             this.profileData = profile
+             text_name.text = profile.firstname + " "+ profile.surname+ " (" + profile.city + ") "
              when (type){
                  "1"-> text_type.text = "Właściciel psa"
                  "2"-> text_type.text = "Wyprowadzacz psów"
@@ -89,7 +87,6 @@ class ProfileActivity() : BaseMVPFragment<ProfileContract.ProfileView,ProfileCon
          }
 
          private fun initialTabLayout(){
-
              val viewPager = viewPagerProfile
              val tabLayout = tabLayout
              val tabsArray = type?.let { tabsByTypeAccount(it) }

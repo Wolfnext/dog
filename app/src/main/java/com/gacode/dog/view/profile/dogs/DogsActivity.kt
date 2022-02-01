@@ -1,5 +1,6 @@
 package com.gacode.dog.view.profile.dogs
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,10 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gacode.dog.R
 import com.gacode.dog.base.BaseMVPFragment
 import com.gacode.dog.model.Dog
+import com.gacode.dog.view.profile.dogs.editDog.EditDogActivity
+import com.gacode.dog.view.profile.update.UpdateProfileActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_dogs.*
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_profile.*
 import java.util.ArrayList
 
 class DogsActivity : BaseMVPFragment<DogsContract.DogsView, DogsContract.DogsPresenter>(), DogsContract.DogsView {
@@ -27,6 +28,8 @@ class DogsActivity : BaseMVPFragment<DogsContract.DogsView, DogsContract.DogsPre
 
         presenter.attachView(this)
 
+
+
         return view
     }
 
@@ -37,11 +40,18 @@ class DogsActivity : BaseMVPFragment<DogsContract.DogsView, DogsContract.DogsPre
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btn_addDog.setOnClickListener { view ->
+            activity?.let{
+                val intent = Intent(it, EditDogActivity::class.java)
+                intent.putExtra("dog", Dog(null,"","","","","","",""))
+                it.startActivity(intent)
+            }
+        }
+
     }
 
     fun updateUI(dog : ArrayList<Dog>){
 
-        Log.d("dogs",dog.toString())
         val recyclerview = recyclerviewDogs
 
         // this creates a vertical layout Manager
@@ -55,6 +65,8 @@ class DogsActivity : BaseMVPFragment<DogsContract.DogsView, DogsContract.DogsPre
         for (i in dog) {
             data.add(i)
         }
+
+
 
         // This will pass the ArrayList to our Adapter
         val adapter =  ItemsAdapter(data, this)

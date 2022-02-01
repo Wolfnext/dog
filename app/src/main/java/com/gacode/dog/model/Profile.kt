@@ -8,13 +8,17 @@ data class Profile(
    // @SerializedName("uid")
    // val uid:String,
 @SerializedName("firstname")
-val firstname: String,
+var firstname: String,
 @SerializedName("surname")
 var surname:String,
-//@SerializedName("place")
-//val place:Object,
+@SerializedName("lon")
+var lon:Double,
+@SerializedName("lat")
+var lat:Double,
+@SerializedName("city")
+var city:String,
 @SerializedName("phone")
-val phone:String,
+var phone:String,
 @SerializedName("desc")
 var desc:String,
 @SerializedName("photoURL")

@@ -23,10 +23,10 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/image_dog"
-            app:layout_constraintTop_toBottomOf="@+id/text_nameDog" />
+            app:layout_constraintTop_toBottomOf="@+id/text_firstname" />
 
         <TextView
-            android:id="@+id/text_nameDog"
+            android:id="@+id/text_firstname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"

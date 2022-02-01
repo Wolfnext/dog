@@ -66,7 +66,7 @@ class RegisterActivity : BaseMVPActivity<RegisterContract.RegisterView, Register
 }
 
 override fun onSuccess() {
-    val intent = Intent(this, ActiveAccountActivity::class.java)
+    val intent = Intent(this, LoginActivity::class.java)
     startActivity(intent)
     finish()
 }

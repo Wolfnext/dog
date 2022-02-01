@@ -16,7 +16,7 @@ interface profile_api {
      * Endpoint of Update data Profile
      */
     @PATCH("profile")
-    fun profile(@Body profile: String) : Call<Profile>
+    fun updateProfile(@Header("Authorization") token: String, @Body profile: Profile) : Call<Profile>
 
 
 }
