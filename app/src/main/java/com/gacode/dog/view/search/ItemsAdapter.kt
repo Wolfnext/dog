@@ -42,6 +42,6 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapt
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val textPrice: TextView = itemView.findViewById(R.id.text_price)
-        val textView: TextView = itemView.findViewById(R.id.text_nameDog)
+        val textView: TextView = itemView.findViewById(R.id.text_firstname)
     }
 }

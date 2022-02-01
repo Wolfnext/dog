@@ -13,13 +13,13 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/text_nameDog"
+            android:id="@+id/text_firstname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-black"
-            android:text="Roman T"
+            android:text="Roman Tolek"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/text_time"
@@ -36,7 +36,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/text_time"
-            app:layout_constraintTop_toBottomOf="@+id/text_nameDog" />
+            app:layout_constraintTop_toBottomOf="@+id/text_firstname" />
 
         <TextView
             android:id="@+id/text_time"
@@ -56,10 +56,30 @@
 
 
         <Button
+            android:id="@+id/button_cancelBooking"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@color/bg"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="#fff"
+            app:icon="@android:drawable/ic_menu_close_clear_cancel"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="25dp"
+            app:iconTint="@color/quantum_googred"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_ConfirmBooking"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="15dp"
             android:background="@android:color/transparent"
             android:backgroundTint="@color/bg"
             android:gravity="center_vertical|center_horizontal"
@@ -70,8 +90,9 @@
             app:iconSize="25dp"
             app:iconTint="@color/quantum_googgreenA700"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/button_cancelBooking"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.444" />
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -36,7 +36,7 @@ interface auth_api {
     *  endpoint of send code activation
     */
     @GET("users/{uid}/confirm-registration")
-    fun sendCode(@Path("uid") uid: String) : Call<Any>
+    fun sendCode() : Call<Any>
 
     /**
     *  endpoint of confirm account

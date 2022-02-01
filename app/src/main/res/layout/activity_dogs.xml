@@ -9,13 +9,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewDogs"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:overScrollMode="always"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="1dp" />
+
+    <Button
+        android:id="@+id/btn_addDog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Dodaj psa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerviewDogs" />
 </androidx.constraintlayout.widget.ConstraintLayout>

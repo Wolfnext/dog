@@ -45,7 +45,7 @@ object Code_fetcher {
 
         fun sendCode(uid: String) {
             val ActiveAccountFetcher = API_creator(auth_api::class.java, API_Settings.base).generate()
-            callback = ActiveAccountFetcher.sendCode(uid)
+            callback = ActiveAccountFetcher.sendCode()
             callback?.enqueue(object : Callback<Any> {
 
 
