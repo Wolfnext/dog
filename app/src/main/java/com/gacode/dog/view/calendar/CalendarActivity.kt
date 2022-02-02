@@ -19,7 +19,9 @@ import com.gacode.dog.util.JWTUtil
 import com.gacode.dog.view.search.SearchActivity
 import com.github.sundeepk.compactcalendarview.CompactCalendarView.CompactCalendarViewListener
 import com.github.sundeepk.compactcalendarview.domain.Event
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_calendar.*
+import kotlinx.android.synthetic.main.activity_filter.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -37,6 +39,7 @@ class CalendarActivity() : BaseMVPFragment<CalendarContract.CalendarView,Calenda
 
         val view: View = inflater!!.inflate(R.layout.activity_calendar, container, false)
         presenter.attachView(this)
+
 
         return view
     }
@@ -65,27 +68,26 @@ class CalendarActivity() : BaseMVPFragment<CalendarContract.CalendarView,Calenda
        fun updateRecycler(booking: ArrayList<Booking>){
            val recyclerview = recyclerView
 
+           recyclerview.adapter = null
            // this creates a vertical layout Manager
            recyclerview.layoutManager = LinearLayoutManager(this.context)
 
            // ArrayList of class ItemsViewModel
-           var data = ArrayList<ItemsViewModel>()
-
+           var data : ArrayList<ItemsViewModel> = ArrayList<ItemsViewModel>()
 
            val outputFormat: DateFormat = SimpleDateFormat("HH:mm")
 
            when (this.type){
                "1" -> for (i in booking) {
-                   data.add(ItemsViewModel(outputFormat.format(inputFormat.parse(i.time_start.toString())).toString(), outputFormat.format(inputFormat.parse(i.time_end.toString())).toString(),i.sitter_firstname,i.dog_name,i.sitterId, i.ownerId,i.status))
+                   data.add(ItemsViewModel(i.id,outputFormat.format(inputFormat.parse(i.time_start.toString())).toString(), outputFormat.format(inputFormat.parse(i.time_end.toString())).toString(),i.sitter_firstname,i.dog_name,i.sitterId, i.ownerId,i.status))
                }
                "2" -> for (i in booking) {
-                   data.add(ItemsViewModel(outputFormat.format(inputFormat.parse(i.time_start.toString())).toString(), outputFormat.format(inputFormat.parse(i.time_end.toString())).toString(),i.owner_firstname,i.dog_name,i.sitterId,i.ownerId,i.status))
+                   data.add(ItemsViewModel(i.id, outputFormat.format(inputFormat.parse(i.time_start.toString())).toString(), outputFormat.format(inputFormat.parse(i.time_end.toString())).toString(),i.owner_firstname,i.dog_name,i.sitterId,i.ownerId,i.status))
                }
            }
 
-
            // This will pass the ArrayList to our Adapter
-           val adapter = ItemsAdapter(data, this)
+           val adapter = ItemsAdapter(data, this, presenter)
 
            // Setting the Adapter with the recyclerview
            recyclerview.adapter = adapter
@@ -108,7 +110,7 @@ class CalendarActivity() : BaseMVPFragment<CalendarContract.CalendarView,Calenda
            Log.d("date",dateFormatForMonth.format(compactcalendar_view.firstDayOfCurrentMonth).toString())
            text_month.text = df.format(compactcalendar_view.getFirstDayOfCurrentMonth())
            // Add event 1 on Sun, 07 Jun 2015 18:20:51 GMT
-
+           compactcalendar_view.removeAllEvents()
            // Add event 1 on Sun, 07 Jun 2015 18:20:51 GMT
 
            for (i in booking) {
@@ -125,9 +127,6 @@ class CalendarActivity() : BaseMVPFragment<CalendarContract.CalendarView,Calenda
                }
 
 
-
-
-
            // Query for events on Sun, 07 Jun 2015 GMT.
            // Time is not relevant when querying for events, since events are returned by day.
            // So you can pass in any arbitary DateTime and you will receive all events for that day.
@@ -136,8 +135,13 @@ class CalendarActivity() : BaseMVPFragment<CalendarContract.CalendarView,Calenda
            // Time is not relevant when querying for events, since events are returned by day.
            // So you can pass in any arbitary DateTime and you will receive all events for that day.
            val events: List<Event> =
-               compactcalendar_view.getEvents(1433701251000L) // can also take a Date object
+               compactcalendar_view.getEvents(Date().time) // can also take a Date object
 
+           var listBookings : ArrayList<Booking> = ArrayList<Booking>()
+           if(!events.isEmpty())for(i in events){
+               listBookings.add(i.data as Booking)
+           }
+           updateRecycler(listBookings)
 
            // events has size 2 with the 2 events inserted previously
 
@@ -177,8 +181,9 @@ class CalendarActivity() : BaseMVPFragment<CalendarContract.CalendarView,Calenda
 
        }
 
-       override fun onSuccess() {
-           TODO("Not yet implemented")
+        override fun onSuccess(e :String) {
+           Snackbar.make(containerCalendar, R.string.confirmBooking, Snackbar.LENGTH_SHORT).show()
+           this.context?.let { presenter.getBookings(it) }
        }
 
        override fun onFailed(e: String) {

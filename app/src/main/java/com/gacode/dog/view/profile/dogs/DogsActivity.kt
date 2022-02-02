@@ -28,8 +28,6 @@ class DogsActivity : BaseMVPFragment<DogsContract.DogsView, DogsContract.DogsPre
 
         presenter.attachView(this)
 
-
-
         return view
     }
 
@@ -67,9 +65,8 @@ class DogsActivity : BaseMVPFragment<DogsContract.DogsView, DogsContract.DogsPre
         }
 
 
-
         // This will pass the ArrayList to our Adapter
-        val adapter =  ItemsAdapter(data, this)
+        val adapter =  ItemsAdapter(data, this, presenter)
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
@@ -80,6 +77,7 @@ class DogsActivity : BaseMVPFragment<DogsContract.DogsView, DogsContract.DogsPre
     }
 
     override fun onSuccess() {
+        Snackbar.make(containerDogs, R.string.deleteDog, Snackbar.LENGTH_LONG).show()
         this.context?.let { presenter.getDogs(it) }
     }
 

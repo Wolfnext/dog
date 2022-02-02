@@ -47,6 +47,9 @@
     <string name="postDog_error">Nie udało się utworzyć psa</string>
     <string name="getService_error">Nie udało się pobrać usług</string>
     <string name="getBooking_error">Nie udało się pobrać zamówień</string>
+    <string name="getSearch_error">Nie udało się pobrać wyszukiwania</string>
+    <string name="confirmBooking">Potwierdzono zapytanie</string>
+    <string name="deleteDog">Usunięto pieska z bazy danych</string>
 
     <string-array name="gender">
         <item>pies</item>

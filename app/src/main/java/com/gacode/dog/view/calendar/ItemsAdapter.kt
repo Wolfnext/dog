@@ -1,18 +1,20 @@
 package com.gacode.dog.view.calendar
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gacode.dog.R
 import com.gacode.dog.util.JWTUtil
+import com.gacode.dog.view.profile.dogs.DogsContract
+import com.gacode.dog.view.profile.dogs.DogsPresenterImpl
 import com.google.android.material.button.MaterialButton
 
-class ItemsAdapter(private val mList: List<ItemsViewModel>, private val calendarActivity: CalendarActivity) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+class ItemsAdapter(private val mList: List<ItemsViewModel>, private var calendarActivity: CalendarActivity,private val presenter: CalendarContract.CalendarPresenter) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,10 +44,22 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>, private val calendar
             holder.textDog.text = ItemsViewModel.dogText
             holder.imageconfirm.visibility = INVISIBLE
             holder.imagecancel.visibility = INVISIBLE
+
         }
         else {
             holder.textFirstname.text = "Właściciel: "+ItemsViewModel.firstname
             holder.textDog.text = "Spacer z " +ItemsViewModel.dogText
+
+            if(ItemsViewModel.status == "1"){
+                holder.imageconfirm.visibility = INVISIBLE
+                holder.imagecancel.visibility = INVISIBLE
+            }
+
+
+            holder.imageconfirm.setOnClickListener { te ->
+                Log.d("clickConfirm",calendarActivity.context.toString())
+                presenter.confirmBooking(calendarActivity.requireContext(),ItemsViewModel.id)
+            }
         }
     }
 
@@ -55,8 +69,10 @@ class ItemsAdapter(private val mList: List<ItemsViewModel>, private val calendar
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View, val calendarActivity : CalendarActivity) : RecyclerView.ViewHolder(ItemView) {
+        var presenter: DogsContract.DogsPresenter = DogsPresenterImpl()
+
         val textTime: TextView = itemView.findViewById(R.id.text_time)
-        val textDog: TextView = itemView.findViewById(R.id.text_dogDesc)
+        val textDog: TextView = itemView.findViewById(R.id.text_distance)
         val textFirstname: TextView = itemView.findViewById(R.id.text_firstname)
         val imageconfirm: MaterialButton = itemView.findViewById(R.id.button_ConfirmBooking)
         val imagecancel: MaterialButton = itemView.findViewById(R.id.button_cancelBooking)

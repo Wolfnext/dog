@@ -10,7 +10,7 @@ import com.gacode.dog.model.Dog
 object CalendarContract {
     interface CalendarView : BaseMVPView {
         fun onSuccess(booking: ArrayList<Booking>)
-        fun onSuccess()
+        fun onSuccess(e: String)
         fun onFailed(e: String)
         fun onError(e: Throwable)
         fun onLogout()
@@ -18,6 +18,7 @@ object CalendarContract {
     interface CalendarPresenter : BaseMVPPresenter<CalendarContract.CalendarView> {
         fun getBookings(context: Context)
         fun cancelBooking(context: Context, id: Int, cancelReason: Cancel_Reason)
+        fun confirmBooking(context: Context, id: Int)
         fun cancel()
     }
 }

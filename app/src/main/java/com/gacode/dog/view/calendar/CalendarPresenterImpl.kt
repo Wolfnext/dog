@@ -12,11 +12,11 @@ class CalendarPresenterImpl  : BaseMVPPresenterImpl<CalendarContract.CalendarVie
     CalendarContract.CalendarPresenter
 {
 private var BookingsFetcher: Booking_fetcher.BookingFetcherImpl?= null
+private var BookingsFetcherAny : Booking_fetcher.BookingFetcherImpl?= null
 
 override fun getBookings(context : Context) {
-
     BookingsFetcher = Booking_fetcher.BookingFetcherImpl(context, object : Booking_fetcher.Listener {
-        override fun onSuccess() {
+        override fun onSuccess(e:String) {
             TODO("Not yet implemented")
         }
 
@@ -26,6 +26,7 @@ override fun getBookings(context : Context) {
 
         override fun onSuccessArray(Booking: ArrayList<Booking>?) {
             if(Booking == null) {
+
                 view?.let { view -> call(view,
                     context.getString(R.string.getBooking_error),
                     view::onFailed)
@@ -45,19 +46,20 @@ override fun getBookings(context : Context) {
 }
 
 override fun cancelBooking(context: Context, id: Int, cancelReason: Cancel_Reason) {
-    BookingsFetcher = Booking_fetcher.BookingFetcherImpl(context, object : Booking_fetcher.Listener {
+    BookingsFetcherAny = Booking_fetcher.BookingFetcherImpl(context, object : Booking_fetcher.Listener {
 
-        override fun onSuccess() {
+        override fun onSuccess(e :String) {
             Log.d("response","cancelBooking")
-           // view?.let { view -> call(view, view::onSuccess) }
+            view?.onSuccess(e)
+            view?.let { view -> call(view, e, view::onSuccess) }
         }
 
         override fun onSuccessBooking(Booking: Booking?) {
-            TODO("Not yet implemented")
+           // view?.let { view -> call(view, view::onSuccessAny)}
         }
 
         override fun onSuccessArray(Booking: ArrayList<Booking>?) {
-            TODO("Not yet implemented")
+           // view?.let { view -> call(view, view::onSuccessAny)}
         }
 
 
@@ -66,8 +68,34 @@ override fun cancelBooking(context: Context, id: Int, cancelReason: Cancel_Reaso
         }
     })
 
-    BookingsFetcher?.cancelBooking(context, id, cancelReason)
+    BookingsFetcherAny?.cancelBooking(context, id, cancelReason)
 }
+
+    override fun confirmBooking(context: Context, id: Int) {
+        BookingsFetcherAny = Booking_fetcher.BookingFetcherImpl(context, object : Booking_fetcher.Listener {
+
+            override fun onSuccess(e :String) {
+                Log.d("view",view.toString())
+                view?.let { view -> call(view, e, view::onSuccess)}
+                Log.d("response","confirmBooking")
+            }
+
+            override fun onSuccessBooking(Booking: Booking?) {
+              //  view?.let { view -> call(view, view::onSuccessAny)}
+            }
+
+            override fun onSuccessArray(Booking: ArrayList<Booking>?) {
+               // view?.let { view -> call(view, view::onSuccessAny)}
+            }
+
+
+            override fun onError(throwable: Throwable) {
+             //   view?.let { view -> call(view, throwable, view::onError) }
+            }
+        })
+
+        BookingsFetcherAny?.confirmBooking(context, id)
+    }
 
 override fun cancel() {
     BookingsFetcher?.cancel()

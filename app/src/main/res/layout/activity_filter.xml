@@ -107,7 +107,7 @@
                     android:stepSize="1.0"
                     android:value="5"
                     android:valueFrom="1"
-                    android:valueTo="30"
+                    android:valueTo="100"
                     app:layout_constraintTop_toBottomOf="@+id/textView9"
                     app:tickVisible="true" />
 
@@ -154,7 +154,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/custom_input"
-                    android:editable="false"
+                    android:editable="true"
                     android:fontFamily="sans-serif-light"
                     android:hint="12-01-2022"
                     android:inputType="none"

@@ -5,6 +5,8 @@ import java.io.Serializable
 import java.sql.Timestamp
 
 data class Booking(
+    @SerializedName("id")
+    var id:Int,
     @SerializedName("owner_firstname")
     var owner_firstname:String,
     @SerializedName("sitter_firstname")

@@ -29,6 +29,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_filter_list_24" />
 
+    <ImageView
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="0dp"
@@ -38,6 +48,6 @@
         android:fontFamily="sans-serif-medium"
         android:text="Wyprowadzacze psów w pobliżu"
         app:layout_constraintEnd_toStartOf="@+id/btn_filter"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_home"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

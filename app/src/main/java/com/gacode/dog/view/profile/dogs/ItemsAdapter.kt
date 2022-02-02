@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gacode.dog.R
 import com.gacode.dog.model.Dog
 import com.gacode.dog.view.profile.dogs.editDog.EditDogActivity
-import java.util.ArrayList
+import kotlin.collections.ArrayList
 
 
-class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: DogsActivity) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>()  {
+class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: DogsActivity, private val presenter: DogsContract.DogsPresenter) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>(), DogsContract.DogsView  {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,7 +20,7 @@ class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: 
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_view_dogs, parent, false)
 
-        return ViewHolder(view, dogsActivity, mList)
+        return ViewHolder(view, dogsActivity, mList, presenter)
     }
 
     // binds the list items to a view
@@ -46,13 +46,9 @@ class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: 
 
 
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View, private val dogsActivity: DogsActivity, private var mList: ArrayList<Dog>) : RecyclerView.ViewHolder(ItemView), View.OnLongClickListener, View.OnCreateContextMenuListener, PopupMenu.OnMenuItemClickListener {
+    class ViewHolder(ItemView: View, private val dogsActivity: DogsActivity, private var mList: ArrayList<Dog>, private val presenter: DogsContract.DogsPresenter) : RecyclerView.ViewHolder(ItemView), View.OnLongClickListener, View.OnCreateContextMenuListener, PopupMenu.OnMenuItemClickListener {
         var dogName: TextView = itemView.findViewById(R.id.text_firstname)
-        var dogDesc: TextView = itemView.findViewById(R.id.text_dogDesc)
-        var presenter: DogsContract.DogsPresenter = DogsPresenterImpl()
-
-
-
+        var dogDesc: TextView = itemView.findViewById(R.id.text_distance)
 
         init {
             itemView.setOnLongClickListener(this)
@@ -106,5 +102,25 @@ class ItemsAdapter(private val mList: ArrayList<Dog>, private val dogsActivity: 
                 else -> false
             }
         }
+    }
+
+    override fun onSuccess(dog: ArrayList<Dog>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccess() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailed(e: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onError(e: Throwable) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLogout() {
+        TODO("Not yet implemented")
     }
 }

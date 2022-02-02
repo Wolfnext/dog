@@ -32,7 +32,6 @@ class ServicesActivity() : BaseMVPFragment<ServicesContract.ServicesView, Servic
 
         presenter.attachView(this)
 
-
         return view
     }
 
@@ -43,7 +42,6 @@ class ServicesActivity() : BaseMVPFragment<ServicesContract.ServicesView, Servic
     }
 
     fun updateUI(Service : ArrayList<Service>){
-
         Log.d("services",Service.toString())
         val recyclerview = recyclerViewServices
 

@@ -49,7 +49,7 @@ DogsContract.DogsPresenter {
         DogsFetcher = Dog_fetcher.DogFetcherImpl(context, object : Dog_fetcher.Listener {
 
             override fun onSuccess() {
-                Log.d("response","deleteDog")
+                Log.d("view",view.toString())
                     view?.let { view -> call(view, view::onSuccess) }
             }
 
@@ -60,7 +60,6 @@ DogsContract.DogsPresenter {
             override fun onSuccessArray(dog: ArrayList<Dog>?) {
                 TODO("Not yet implemented")
             }
-
 
             override fun onError(throwable: Throwable) {
                 view?.let { view -> call(view, throwable, view::onError) }

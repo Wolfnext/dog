@@ -85,21 +85,31 @@ object Booking_fetcher {
             callbackAny = BookingFetcher.cancelBooking(token = "Bearer " + Authentication.getAccessToken(context), cancel_reason, id)
             callbackAny?.enqueue(object : Callback<Any> {
                 override fun onResponse(call: Call<Any>, response: Response<Any>) {
-
+                    Log.d("response",response.body().toString())
                     if (response != null) {
-                        if (response.isSuccessful) {
-                            Log.d("response",response.body().toString())
-                           listener.onSuccess()
-                        } else {
-                            Log.d("response",response.body().toString())
-                            listener.onSuccess()
-                        }
-                    } else {
-                        Log.d("response","error")
-                        listener.onError(Throwable(this@BookingFetcherImpl.context.getString(R.string.auth_error)))
+                        listener.onSuccess(response.body().toString())
                     }
+
                 }
 
+                override fun onFailure(call: Call<Any>, t: Throwable) {
+
+                }
+            })
+        }
+
+
+        fun confirmBooking(context: Context, id: Int) {
+            val BookingFetcher = API_creator(booking_api::class.java, API_Settings.base).generate()
+
+            callbackAny = BookingFetcher.confirmBooking(token = "Bearer " + Authentication.getAccessToken(context), id)
+            callbackAny?.enqueue(object : Callback<Any> {
+                override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                    Log.d("response",response.body().toString())
+                    if (response != null) {
+                        listener.onSuccess(response.body().toString())
+                    }
+                }
 
                 override fun onFailure(call: Call<Any>, t: Throwable) {
 
@@ -117,7 +127,7 @@ object Booking_fetcher {
 
 
     interface Listener {
-        fun onSuccess()
+        fun onSuccess(e :String)
         fun onSuccessBooking(Booking: Booking?)
         fun onSuccessArray(Booking: ArrayList<Booking>?)
         fun onError(throwable: Throwable)

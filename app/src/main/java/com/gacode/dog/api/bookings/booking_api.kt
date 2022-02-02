@@ -22,13 +22,13 @@ interface booking_api {
      /**
      * Endpoint of cancel booking
      */
-    @PATCH("bookings/{id}/cancel")
+    @POST("bookings/{id}/cancel")
     fun cancelBooking(@Header("Authorization") token: String, @Body cancel_reason: Cancel_Reason, @Path("id") id: Int) : Call<Any>
 
     /**
      * Endpoint of Create a booking
      */
-    @PATCH("bookings/{id}/confirm")
-    fun cancelBooking(@Header("Authorization") token: String, @Path("id") id: String) : Call<Any>
+    @POST("bookings/{id}/confirm")
+    fun confirmBooking(@Header("Authorization") token: String, @Path("id") id: Int) : Call<Any>
 
 }
